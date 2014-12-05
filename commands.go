@@ -15,8 +15,11 @@ import (
 	"github.com/docker/machine/drivers"
 	_ "github.com/docker/machine/drivers/azure"
 	_ "github.com/docker/machine/drivers/digitalocean"
+	_ "github.com/docker/machine/drivers/fusion"
 	_ "github.com/docker/machine/drivers/none"
+	_ "github.com/docker/machine/drivers/vcloudair"
 	_ "github.com/docker/machine/drivers/virtualbox"
+	_ "github.com/docker/machine/drivers/vsphere"
 )
 
 type DockerCli struct{}
