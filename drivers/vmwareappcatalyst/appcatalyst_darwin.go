@@ -195,6 +195,9 @@ func (d *Driver) SetConfigFromFlags(flags drivers.DriverOptions) error {
 	d.APIPort = flags.Int("vmwareappcatalyst-api-port")
 
 	// We support a maximum of 16 cpu.
+	if d.CPU < 1 {
+		d.CPU = int(runtime.NumCPU())
+	}
 	if d.CPU > 16 {
 		d.CPU = 16
 	}
