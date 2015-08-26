@@ -559,7 +559,7 @@ func (d *Driver) mountSharedFolder(shareDir, shareName string) error {
 		return err
 	}
 
-	command := "[ ! -d " + shareDir + " ]&& sudo mkdir " + shareDir + "; sudo mount -t vmhgfs .host:/" + shareName + " " + shareDir
+	command := "[ ! -d " + shareDir + " ]&& sudo mkdir " + shareDir + "; [ -f /usr/bin/vmhgfs-fuse ]&& sudo /usr/bin/vmhgfs-fuse -o allow_other .host:/" + shareName + " " + shareDir + " || sudo mount -t vmhgfs .host:/" + shareName + " " + shareDir
 
 	log.Debugf("About to run SSH command:\n%s", command)
 	output, err := client.Output(command)
